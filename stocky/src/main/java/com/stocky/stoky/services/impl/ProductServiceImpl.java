@@ -13,8 +13,32 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public Product add(Product product) {
+    public Product add(String name, int stock) {
+        Product product = new Product();
+        product.setName(name);
+        product.setStock(stock);
         return productRepository.save(product);
     }
 
+    @Override
+    public Product findById(int id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Iterable<Product> list() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product decrement(Product product) {
+        int newStock = product.getStock() - 1;
+        if (newStock <= 0) {
+            productRepository.delete(product);
+            return null;
+        }
+        product.setStock(newStock);
+        productRepository.save(product);
+        return product;
+    }
 }

@@ -1,6 +1,7 @@
-package com.stocky.stoky.dto;
+package com.stocky.stoky.dtos;
 
-public class ProductDto {
+public class ProductRequestDto {
+
     private String name;
     private int stock;
 

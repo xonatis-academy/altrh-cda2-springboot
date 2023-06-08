@@ -12,6 +12,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+
     private int stock;
 
     public int getId() {
@@ -37,4 +38,5 @@ public class Product {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
 }
